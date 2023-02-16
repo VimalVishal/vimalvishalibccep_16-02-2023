@@ -1,0 +1,20 @@
+fn remove_user(username: &str, community: &mut Vec<String>) -> bool {
+    if let Some(index) = community.iter().position(|u| u == username) {
+        community.remove(index);
+        println!("{} has been removed from the community", username);
+        true
+    } else {
+        println!("{} is not present in the community", username);
+        false
+    }
+}
+
+fn main() {
+    let mut community = vec!["Alice".to_string(), "Bob".to_string(), "Charlie".to_string()];
+
+    // Remove a user who is present in the community
+    remove_user("Alice", &mut community); // prints "Alice has been removed from the community"
+    
+    // Try to remove a user who is not present in the community
+    remove_user("David", &mut community); // prints "David is not present in the community"
+}
